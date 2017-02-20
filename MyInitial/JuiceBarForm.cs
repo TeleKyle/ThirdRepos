@@ -163,15 +163,15 @@ namespace MyNameSpace
             switch (selectedSizeRadioButton.Name)
             {
                 case "twelveOunceRadioButton":
-                    itemSizeDecimal = 3m;
+                    itemSizeDecimal = 4m;
                     drinkOrder[itemCountInteger].sizeString = "12 oz";
                     break;
                 case "sixteenOunceRadioButton":
-                    itemSizeDecimal = 3.5m;
+                    itemSizeDecimal = 5m;
                     drinkOrder[itemCountInteger].sizeString = "16 oz";
                     break;
                 case "twentyOunceRadioButton":
-                    itemSizeDecimal = 4m;
+                    itemSizeDecimal = 6m;
                     drinkOrder[itemCountInteger].sizeString = "20 oz";
                     break;
             }

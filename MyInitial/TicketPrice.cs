@@ -9,14 +9,16 @@ namespace Ticketing
     {
         private int section;
         private int quantity;
-        private bool discount;
+        private bool regDiscount;
+        private bool childDiscount;
         private decimal amountDue;
         private decimal mPrice;
 
         const decimal mdecBalcony = 35.5m;
         const decimal mdecGeneral = 28.75m;
         const decimal mdecBox = 62.0m;
-        const decimal mdecDiscount = 5.0m; 
+        const decimal mdecDiscount = 5.0m;
+        const decimal mdecChildDiscount = 10.0m;
 
         private int Section
         {
@@ -30,11 +32,18 @@ namespace Ticketing
             set { quantity = value; }
         }
 
-         private bool Discount
-        {
-            get { return discount; }
-            set { discount = value; }
-        }
+        //added child discount
+         private bool ChildDiscount
+         {
+             get { return childDiscount; }
+             set { childDiscount = value; }
+         }
+
+         private bool RegDiscount
+         {
+             get { return regDiscount; }
+             set { regDiscount = value; }
+         }
 
          public decimal AmountDue
         {
@@ -42,12 +51,13 @@ namespace Ticketing
             set { amountDue = value; }
         }
 
-    // Constructor for TcicketPrice
-    public TicketPrice(int section, int quantity, bool discount)
+    // Constructor for TicketPrice
+    public TicketPrice(int section, int quantity, bool regDiscount, bool childDiscount)
     {
         Section = section;
         Quantity = quantity;
-        Discount = discount;
+        RegDiscount = regDiscount;
+        ChildDiscount = childDiscount;
         AmountDue = amountDue;
     }
 
@@ -66,8 +76,15 @@ namespace Ticketing
                  mPrice = mdecBox;
                  break;
          }
-         if (discount)
-         { mPrice -= mdecDiscount; }
+         if (regDiscount)
+         { 
+             mPrice -= mdecDiscount;
+         }
+         else if (childDiscount)
+         {
+             mPrice -= mdecChildDiscount;
+         }
+         
 
          AmountDue = mPrice * quantity;
 
